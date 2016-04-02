@@ -1,0 +1,117 @@
+<html>
+<body style="font-family:Arial, helvetica,
+        sans-serif; font-size:12pt; background-color:white">
+<table BORDER="1">
+<tr bgcolor="black">
+<th><font color="white">Name</font></th>
+<th><font color="white">Description</font></th>
+<th>_</th>
+</tr>
+<tr bgcolor="white">
+<td>
+<font color="black">erk</font>
+</td>
+<td>
+<font color="black">wibble</font>
+</td>
+<TD><input type="button" value="edit" language="VBScript" onclick=" 
+                  processEdit '10','erk','wibble'
+                "><input type="button" value="delete" onclick=" 
+                  processDelete( '10')
+                "></TD>
+</tr>
+<tr bgcolor="white">
+<td>
+<font color="black">dumb</font>
+</td>
+<td>
+<font color="black">erble</font>
+</td>
+<TD><input type="button" value="edit" language="VBScript" onclick=" 
+                  processEdit '11','dumb','erble'
+                "><input type="button" value="delete" onclick=" 
+                  processDelete( '11')
+                "></TD>
+</tr>
+<tr bgcolor="white">
+<td>
+<font color="black">sponge</font>
+</td>
+<td>
+<font color="black">flange</font>
+</td>
+<TD><input type="button" value="edit" language="VBScript" onclick=" 
+                  processEdit '12','sponge','flange'
+                "><input type="button" value="delete" onclick=" 
+                  processDelete( '12')
+                "></TD>
+</tr>
+<tr>
+<form name="frmCatagory" language="VBScript">
+<td><input type="hidden" name="frmId"><input type="text" name="frmName"></td>
+<td><input type="text" name="frmDescription"></td>
+<td><input type="button" name="frmUpdate" onClick="InsertUpdateCatagory()" value="update"><input type="button" name="frmUpdate" onClick="ClearForm()" value="clear"></td>
+</form>
+</tr>
+</table>
+</body><SCRIPT language="VBScript">
+
+
+function processEdit(strId,strName,strDescription)
+  Document.frmCatagory.frmName.value = strName
+  Document.frmCatagory.frmDescription.value = strDescription
+  Document.frmCatagory.frmId.value = strId
+  tgtResults.innerHTML = ""
+end function
+
+function processDelete(strId)
+
+  Dim strURL
+  
+  strURL = ""
+
+  strURL = addToURL(strURL,"reqREQUEST","DELETE","False")
+  strURL = addToURL(strURL,"reqID",strId,"False")
+  tgtResults.innerHTML = putHTTP("insUpdCatagory.asp" & strURL) 
+  
+  renderTable
+end function
+
+function ClearForm
+  Document.frmCatagory.frmName.value = ""
+  Document.frmCatagory.frmDescription.value = ""
+  Document.frmCatagory.frmId.value = ""
+  tgtResults.innerHTML = ""
+end function
+
+function InsertUpdateCatagory
+
+  Dim strId
+  Dim strName
+  Dim strDescription
+
+  strName = Document.frmCatagory.frmName.value 
+  strDescription = Document.frmCatagory.frmDescription.value 
+  strId = Document.frmCatagory.frmId.value 
+  
+  Dim strURL
+  
+  strURL = ""
+
+  if (strId="") Then
+    strURL = addToURL(strURL,"reqREQUEST","INSERT","False")
+  Else
+    strURL = addToURL(strURL,"reqREQUEST","UPDATE","False")
+    strURL = addToURL(strURL,"reqID",strId,"False")
+  End if
+  
+  strURL = addToURL(strURL,"reqNAME",strName,"True")
+  strURL = addToURL(strURL,"reqDESCRIPTION",strDescription,"True")
+  tgtResults.innerHTML = putHTTP("insUpdCatagory.asp" & strURL) 
+  
+  renderTable
+end function
+</SCRIPT></html>
+
+
+

@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0045)http://www.thesite.org/~frank/ora-monkey.html -->
+<HTML><HEAD><TITLE>Oracle 8i Table Writer</TITLE>
+<LINK rel="stylesheet" href="prim.css"/>
+<LINK rel="Shortcut Icon" href="ronin.ico"/>
+<SCRIPT src="selectBox.js"></SCRIPT>
+<SCRIPT src="oraSchema.js"></SCRIPT>
+<BODY>
+<TABLE border=0 cellpadding="0" cellspacing=0 bgcolor="#cbebfa" style="WIDTH: 600px; HEIGHT: 600px"><FORM action="" name="ddlgen" class="prompt">
+  <TBODY>
+  <TR><TD colspan="32" valign="top" align="left"><img src="tlo-curve.gif"></td></tr>
+  <TR><!-- Tablename -->
+  	<td><IMG height=1 src="spacer.gif" width=5></td>
+    <TD colSpan=13 bgcolor="#6699cc"><span class="prompt" STYLE="BOTTOM: 2pt; POSITION: relative">Table Name:</span><INPUT name=tablename size="40" onblur=redraw()></TD>
+    <TD colSpan=14 bgcolor="#6699cc"><span class="prompt" STYLE="BOTTOM: 2pt; POSITION: relative">Table Prefix:</span><INPUT name=tableprefix size="4" onblur=redraw()></TD>
+	<TD colSpan=3  bgcolor="#6699cc" align="right" valign="top"><INPUT type="reset" class="BlueButton" value=Reset></TD>
+	<td><IMG height=1 src="spacer.gif" width=5></td>
+  </TR>
+  <TR><!-- Row -->
+    <td><IMG height=1 src="spacer.gif" width=5></td>
+    <TD colSpan=7><span class="prompt" STYLE="BOTTOM: 2pt; POSITION: relative">Field:</span><INPUT name=row></TD>
+    <TD colSpan=6><span class="prompt" STYLE="BOTTOM: 2pt; POSITION: relative">type:</span><SELECT name=type style="WIDTH: 120px"> <OPTION selected 
+        value=1>VARCHAR2</OPTION><OPTION value=2>CHAR</OPTION><OPTION 
+        value=3>NUMBER</OPTION><OPTION value=4>DATE</OPTION> <OPTION 
+        value=5>RAW</OPTION><OPTION value=6>LONG</OPTION><OPTION value=7>LONG 
+        RAW</OPTION><OPTION value=8>ROWID</OPTION> <OPTION 
+        value=9>BLOB</OPTION><OPTION value=10>CLOB</OPTION><OPTION 
+        value=11>NCLOB</OPTION><OPTION value=12>BFILE</OPTION></SELECT></TD>
+    <TD colSpan=3><span class="prompt" STYLE="BOTTOM: 2pt; POSITION: relative">Size:</span><INPUT name=size size="4"></TD>
+    <TD colSpan=5><span class="prompt" STYLE="BOTTOM: 2pt; POSITION: relative">Check value:</span><INPUT name="check"></TD>
+	<TD colSpan=7><span class="prompt" STYLE="BOTTOM: 2pt; POSITION: relative">Null:</span><INPUT name=nullable type=checkbox></TD>
+    <TD align=right valign="top" colSpan=2><INPUT onclick=addRow() type=button value="+" class="BlueButton"><INPUT onclick="resetEntry( document.forms.ddlgen, 'add')" type=button value="C"  class="BlueButton"></TD>
+	<td><IMG height=1 src="spacer.gif" width=5></td>
+  </TR>
+  <TR><!-- Seperator -->
+    <td><IMG height=1 src="spacer.gif" width=5></td><TD colSpan=30 bgcolor="black"><IMG height=1 src="spacer.gif" width=800></TD><td><IMG height=1 src="spacer.gif" width=5></td></TR>
+  <TR valign=top><!-- Constraint -->
+    <td><IMG height=1 src="spacer.gif" width=5></td>
+    <TD colSpan=7><span class="prompt" STYLE="BOTTOM: 2pt; POSITION: relative">Constraint:</span><INPUT name="index"></TD>
+    <TD colSpan=6><span class="prompt" STYLE="BOTTOM: 2pt; POSITION: relative">type:</span><SELECT name="ctype"><OPTION selected 
+        value="PRIMARY KEY">PRIMARY KEY</OPTION><OPTION 
+        value="UNIQUE">UNIQUE</OPTION></SELECT></TD>
+    <TD colSpan=4><SELECT multiple name=rows size="5" style="WIDTH: 220px"></SELECT><br><span class="overPrompt">Fields</span></TD>
+    <TD colspan="1" align=middle vAlign=top><INPUT onclick=selectFieldWindow.up() type=button value="+"  class="BlueButton"><BR><INPUT onclick="fieldWindow.take( selectFieldWindow )" type=button value="<"  class="BlueButton"><INPUT onclick="fieldWindow.give( selectFieldWindow )" type=button value=">"   class="BlueButton"><BR><INPUT onclick=selectFieldWindow.down() type=button value=-  class="BlueButton"></TD>
+    <TD colSpan=10><SELECT name=selectrows size="5" style="WIDTH: 220px"></SELECT><br><span class="overPrompt">Constrained Fields</span></TD>
+    <TD colSpan=2 align=right valign="top"><INPUT name=idxButton onclick=addIndex() type=button value="+"  class="BlueButton"><INPUT onclick="resetEntry('idx')" type=button value="C"  class="BlueButton"></TD>
+  	<td><IMG height=1 src="spacer.gif" width=5></td>
+  </TR>
+  <TR><!-- Seperator -->
+    <td><IMG height=1 src="spacer.gif" width=5></td><TD colSpan=30 bgcolor="black"><IMG height=1 src="spacer.gif" width=800></TD><td><IMG height=1 src="spacer.gif" width=5></td></TR>
+  <tr><!-- Foreign Key -->
+    <td><IMG height=1 src="spacer.gif" width=5></td>
+  	<TD colSpan=8><span class="prompt" STYLE="BOTTOM: 2pt; POSITION: relative">Foreign Key:</span><INPUT name=index></TD>
+	<TD colSpan=7><span class="prompt" STYLE="BOTTOM: 2pt; POSITION: relative">References:</span><SELECT name=refRow size="1" style="WIDTH: 120px"></SELECT></TD>
+	<TD colSpan=4><span class="prompt" STYLE="BOTTOM: 2pt; POSITION: relative">Table:</span><INPUT name=index></TD>
+	<TD colSpan=3><span class="prompt" STYLE="BOTTOM: 2pt; POSITION: relative">Field:</span><INPUT name=index></TD>
+	<TD colSpan=6><span class="prompt" STYLE="BOTTOM: 2pt; POSITION: relative">Cascade Delete:</span><INPUT name="cascade" type="checkbox"></TD>
+	<TD align=right valign="top" colSpan=2><INPUT onclick=addRow() type=button value="+"  class="BlueButton"><INPUT onclick="resetEntry('add')" type=button value="C"  class="BlueButton"></TD>
+	<td><IMG height=1 src="spacer.gif" width=5></td>
+  </tr>
+  <TR><!-- Seperator  -->
+    <td><IMG height=1 src="spacer.gif" width=5></td><TD colSpan=30 bgcolor="black"><IMG height=1 src="spacer.gif" width=800></TD><td><IMG height=1 src="spacer.gif" width=5></td></TR>
+  <TR><!-- SQL Views -->
+    <td><IMG height=1 src="spacer.gif" width=5></td>
+    <TD align=left colSpan=8 vAlign=top><span class="overPrompt">Rows:</span><BR><SELECT name=rowWin size=10 style="WIDTH: 225px" onChange=redraw()></SELECT><br align="right"><INPUT type=button value=Edit class="BlueButton"><INPUT type=button value=Delete class="BlueButton"><INPUT onclick=rowWindow.up() type=button value=+ class="BlueButton"><INPUT onclick=rowWindow.down() type=button value="-" class="BlueButton"><BR></TD>
+	<TD align=left colSpan=7 vAlign=top><span class="overPrompt">Indexes:</span><BR><SELECT name=idxWin size=10 style="WIDTH: 225px"></SELECT><br align="right"><INPUT type=button value=Edit class="BlueButton"><INPUT type=button value=Delete class="BlueButton"><INPUT onclick=idxWindow.up() type=button value=+ class="BlueButton"><INPUT class="BlueButton" onclick=idxWindow.down() type=button value=-><BR></TD>
+	<TD colSpan=15 valign="top" rowspan="2"><span class="overPrompt">Documentation:</span><BR><TEXTAREA style="WIDTH: 525px" name=ddltext rows=25 wrap=physical cols=75>Final SQL goes here:</TEXTAREA></TD>
+	<td><IMG height=1 src="spacer.gif" width=5></td>
+  </TR>
+      <td><IMG height=1 src="spacer.gif" width=5></td>
+	  <td colspan="1"></td>
+	  <td colspan="12" bgcolor="#6699cc"><p align="center"><IMG src="Ronin-sml.gif" height="50" width="50"></p><p class="description">Oracle-monkey is a javascripted form to generate Oracle tables with accompanying constraints and foreign keys.</p>
+	  <p class="description">Due to the sensitive technical nature of Database Administration, it is recommended that you gain an understanding of data definition language before applying any code generated here.</p>
+	  <p class="description">Ronin IT accepts no responsibility or liability for use of misuse of this application.</p></td>
+	  <td colspan="2"></td>
+	  <td><IMG height=1 src="spacer.gif" width=5></td>
+  <tr>
+  </tr>
+  <tr colspan=32><td><IMG height=5 src="spacer.gif"></td></tr>
+  </FORM></TBODY></TABLE>
+<SCRIPT>
+	// Start Real Work.
+	
+	// select boxes for index entry.
+	var fieldWindow = new SelectBox( document.forms.ddlgen.rows );
+	var selectFieldWindow = new SelectBox( document.forms.ddlgen.selectrows );
+	var selectReferenceWindow = new SelectBox( document.forms.ddlgen.refRow );
+	
+	// select box to display source code.
+	var rowWindow = new SelectBox( document.forms.ddlgen.rowWin );
+	var idxWindow = new SelectBox( document.forms.ddlgen.idxWin );
+	
+	var source = new Array();
+	var rowSource = new Array();
+	var idxSource = new Array();
+</SCRIPT>
+</BODY></HTML>

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Projects/!svn/ver/4/trunk/Expenses%20Web%20Software/maintain-companies
+END
+getCompanyListXML.asp
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/Projects/!svn/ver/4/trunk/Expenses%20Web%20Software/maintain-companies/getCompanyListXML.asp
+END
+list-companies.asp
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/Projects/!svn/ver/4/trunk/Expenses%20Web%20Software/maintain-companies/list-companies.asp
+END
+insUpdCompany.asp
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Projects/!svn/ver/4/trunk/Expenses%20Web%20Software/maintain-companies/insUpdCompany.asp
+END
+insUpdPaymentDefinition.asp
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/Projects/!svn/ver/4/trunk/Expenses%20Web%20Software/maintain-companies/insUpdPaymentDefinition.asp
+END
+getCompanyListXSL.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/Projects/!svn/ver/4/trunk/Expenses%20Web%20Software/maintain-companies/getCompanyListXSL.xsl
+END
+maintain-companies.asp
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/Projects/!svn/ver/4/trunk/Expenses%20Web%20Software/maintain-companies/maintain-companies.asp
+END

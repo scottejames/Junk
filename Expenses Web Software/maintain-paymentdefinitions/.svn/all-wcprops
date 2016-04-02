@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/Projects/!svn/ver/4/trunk/Expenses%20Web%20Software/maintain-paymentdefinitions
+END
+getPaymentDefinitionXSL.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/Projects/!svn/ver/4/trunk/Expenses%20Web%20Software/maintain-paymentdefinitions/getPaymentDefinitionXSL.xsl
+END
+getPaymentDefinitionXML.asp
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/Projects/!svn/ver/4/trunk/Expenses%20Web%20Software/maintain-paymentdefinitions/getPaymentDefinitionXML.asp
+END
+maintain-paymentdefinitions.asp
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/Projects/!svn/ver/4/trunk/Expenses%20Web%20Software/maintain-paymentdefinitions/maintain-paymentdefinitions.asp
+END
+insUpdPaymentDefinition.asp
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/Projects/!svn/ver/4/trunk/Expenses%20Web%20Software/maintain-paymentdefinitions/insUpdPaymentDefinition.asp
+END
+add-paymentdefinition.asp
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Projects/!svn/ver/4/trunk/Expenses%20Web%20Software/maintain-paymentdefinitions/add-paymentdefinition.asp
+END

@@ -1,0 +1,10 @@
+
+
+
+A {
+	color : #FF4500;
+}
+
+A:HOVER {
+	color : Blue;
+}
