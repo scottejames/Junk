@@ -1,0 +1,13 @@
+SELECT 
+   rnTransactionGrouping.id, 
+   rnTransactionGrouping.extref,
+   tblInvoiceDetail.NET,
+   tblInvoiceDetail.Narrative,
+   tblInvoiceDetail.ChildCode,
+   rnParentDetails.id
+FROM (
+    (tblInvoice INNER JOIN rnTransactionGrouping 
+      ON tblInvoice.InvoiceNumber = rnTransactionGrouping.extref) 
+    INNER JOIN rnParentDetails ON tblInvoice.ChildCode = rnParentDetails.cplaycode) 
+    INNER JOIN tblInvoiceDetail ON tblInvoice.InvoiceNumber = tblInvoiceDetail.InvoiceNumber
+

@@ -1,0 +1,57 @@
+#!perl
+
+use DBI;
+use DBD::ODBC;
+
+print ("Create waiting list report \n");
+
+my $dsn="dbi:ODBC:CplayONE";
+my $user="";
+my $password="";
+
+my $rc,$rv,$dbh,$sth;
+
+$dbh = DBI->connect($dsn, $user, $password,
+                      { RaiseError => 1, AutoCommit => 1});
+
+$sth = $dbh->prepare(
+" SELECT child.Surname,child.foreName
+    FROM tblChild child, 
+         tblBooking booking, 
+         tblSession monSession,
+         tblSession tuesSession,
+         tblSession wedSession,
+         tblSession thursSession,
+         tblSession friSession
+   WHERE booking.ChildCode = child.ChildCode
+     AND booking.startDate > \#01/01/01\#
+     AND booking.startDate < \#02/01/01\#
+     AND monSession   = booking.MondaySessionCode
+     AND tuesSession  = booking.TuesdaySessionCode
+     AND wedSession   = booking.WednesdaySessionCode
+     AND thursSession = booking.ThursdaySessionCode
+     AND friSession   = booking.FridaySessionCode")
+    || die("Unable to prepare select statement");
+
+$rv = $sth->execute
+    || die ("Unable to execute query");
+
+print "Query will return $sth->{NUM_OF_FIELDS} fields.\n\n";
+
+while (($surname, $forename) = $sth->fetchrow_array) 
+{
+    print (" SURNAME: $surname FORENAME: $forename\n");
+}
+
+$rc = $dbh->disconnect || warn $dbh->errstr;
+print ("Create waiting list report DONE\n");
+
+
+
+
+
+
+
+
+
+
